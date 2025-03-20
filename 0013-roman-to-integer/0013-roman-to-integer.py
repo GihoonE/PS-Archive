@@ -1,34 +1,18 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
+        let = {
+            'I':1,
+            'V':5,
+            'X':10,
+            'L':50,
+            'C':100,
+            'D':500,
+            'M':1000
+        }
         sum = 0
-        i = 0
-        while i < len(s):
-            if s[i] == 'I':
-                sum += 1
-            elif s[i] == 'V':
-                sum += 5
-                if i and s[i-1] == 'I':
-                    sum -= 2
-            elif s[i] == 'X':
-                sum += 10
-                if i and s[i-1] == 'I':
-                    sum -= 2
-            elif s[i] == 'L':
-                sum += 50
-                if i and s[i-1] == 'X':
-                    sum -= 20
-            elif s[i] == 'C':
-                sum += 100
-                if i and s[i-1] == 'X':
-                    sum -= 20
-            elif s[i] == 'D':
-                sum += 500
-                if i and s[i-1] == 'C':
-                    sum -= 200
-            else: #M
-                sum += 1000
-                if i and s[i-1] == 'C':
-                    sum -= 200
-            i += 1
+        for i in range(len(s)):
+            if i > 0 and let[s[i]] > let[s[i-1]]:
+                sum += let[s[i]] - 2*let[s[i-1]]
+            else:
+                sum += let[s[i]]
         return sum
-        
