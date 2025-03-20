@@ -10,7 +10,8 @@ class Solution:
             'M':1000
         }
         sum = 0
-        for i in range(len(s)):
+        n = len(s)
+        for i in range(n):
             if i > 0 and let[s[i]] > let[s[i-1]]:
                 sum += let[s[i]] - 2*let[s[i-1]]
             else:
