@@ -21,7 +21,7 @@ class Solution:
         if list1:
             ret.val = list1.val
             ret.next = list1.next
-        elif list2:
+        else:
             ret.val = list2.val
             ret.next = list2.next
         return ans
