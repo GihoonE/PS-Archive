@@ -1,20 +1,16 @@
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         #1010 11 --> 11
-        if (dividend < 0 and divisor <0) or (dividend > 0 and divisor > 0):
-            sign = 1
-        else:
-            sign = -1
-        dividend, divisor = abs(dividend),abs(divisor)
+        di, div = abs(dividend),abs(divisor)
         quotient = 0
-        while divisor <= dividend:
+        while div <= di:
             shift = 0
-            while (divisor << shift) <= dividend:
+            while (div << shift) <= di:
                 shift += 1
             shift -= 1
-            dividend -= divisor << shift
+            di -= div << shift
             quotient += 1 << shift
-        if sign == -1:
-            return -quotient
+        if (dividend < 0 and divisor <0) or (dividend > 0 and divisor > 0):
+            return min(pow(2,31)-1,quotient)
         else:
-            return quotient
+            return -quotient
