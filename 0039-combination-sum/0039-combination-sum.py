@@ -2,14 +2,16 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         ret = []
         def recur(arr,cur,su,tar):
-            c = cur[:]
-            if su == tar:
-                ans = sorted(c)
-                if ans not in ret:
-                    ret.append(ans)
+            if su > tar:
+                return 
+            elif su == tar:
+                a = sorted(cur)
+                if a not in ret:
+                    ret.append(a)
+                return
             else:
                 for num in arr:
-                    c = cur[:]
+                    c = cur.copy()
                     if num > target:
                         continue
                     elif su+num <= target:
