@@ -11,10 +11,10 @@ class Solution:
                 return
             else:
                 for num in arr:
-                    c = cur.copy()
                     if num > target:
                         continue
                     elif su+num <= target:
+                        c = cur.copy()
                         c.append(num)
                         s = su + num
                         recur(arr,c,s,tar)
